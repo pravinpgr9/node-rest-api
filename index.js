@@ -10,6 +10,7 @@ const userRoute = require('./routes/users')
 const authRoute = require('./routes/auth')
 const postRoute = require('./routes/posts')
 const verifyRoute = require('./routes/emailverify')
+const linkedRoute = require('./routes/linkedpost')
 
 dotenv.config();
 
@@ -38,6 +39,8 @@ app.use("/api/user",userRoute)
 app.use("/api/auth",authRoute)
 app.use("/api/posts",postRoute)
 app.use("/api/emailverify",verifyRoute)
+app.use("/api/posts",postRoute)
+app.use("/api/linkedin",linkedRoute)
 
 app.listen(8808, () => {
     console.log("Backend Server is Running on port 8808.");
