@@ -12,13 +12,17 @@ router.post("/", async (req, res) => {
 
     // Check if all required fields are present
     if (!name || !email || !desc || !city) {
-      return res.status(400).json({ message: "All fields are required" });
+      return res
+        .status(400)
+        .json({ success: false, message: "All fields are required" });
     }
-    
+
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return res.status(400).json({ message: "Invalid email format" });
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid email format" });
     }
 
     const newLinkedpost = new Linkedpost({
@@ -29,9 +33,22 @@ router.post("/", async (req, res) => {
     });
 
     const savedLinkedpost = await newLinkedpost.save();
-    res.status(201).json(savedLinkedpost);
+    res
+      .status(201)
+      .json({
+        success: true,
+        message: "Linked post created successfully",
+        data: savedLinkedpost,
+      });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    // Handle specific error types
+    if (error.name === "ValidationError") {
+      return res.status(400).json({ success: false, message: error.message });
+    } else {
+      return res
+        .status(500)
+        .json({ success: false, message: "An unexpected error occurred" });
+    }
   }
 });
 
