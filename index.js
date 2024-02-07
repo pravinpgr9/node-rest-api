@@ -1,5 +1,9 @@
 const express = require("express");
 const app = express();
+const cors = require("cors"); // Import the cors package
+
+// Enable CORS for all routes
+app.use(cors());
 
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
