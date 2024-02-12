@@ -1,3 +1,4 @@
+![image](https://github.com/pravinpgr9/node-rest-api/assets/15365979/5f923c67-51a5-4569-8887-e65504fe7cff)
 
 ```markdown
 # Social App API Documentation
