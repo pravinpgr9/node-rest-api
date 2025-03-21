@@ -7,13 +7,14 @@ const User = require("../models/User");
 // Create the post
 router.post("/", async (req, res) => {
   try {
-    const { userId, desc, img, likes } = req.body;
+    const { userId, title, desc, img, likes } = req.body;
 
     const newPost = new Post({
       userId,
+      title, // ✅ Ensure title is stored
       desc,
       img,
-      likes: likes || [], // Default to an empty array if 'likes' is not provided
+      likes: likes || [],
     });
 
     const savedPost = await newPost.save();
