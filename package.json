@@ -17,7 +17,6 @@
     "helmet": "^7.1.0",
     "mongoose": "^8.1.1",
     "morgan": "^1.10.0",
-    "nodemon": "^3.0.3",
-    "sib-api-v3-sdk": "^8.5.0"
+    "nodemon": "^3.0.3"
   }
 }
